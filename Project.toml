@@ -1,7 +1,15 @@
 name = "ProjetJulia"
 uuid = "b37366fc-009b-4748-a135-4a9b38dcf2f8"
-authors = ["tahakaddis <tahakaddis3@gmail.com>"]
 version = "0.0.1"
+authors = ["tahakaddis <tahakaddis3@gmail.com>"]
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DecisionTree = "7806a523-6efd-50cb-b5f6-3fa6f1930dbb"
 
 [compat]
+CSV = "1.1.0"
+DataFrames = "1.8.2"
+DecisionTree = "0.12.4"
 julia = "1.10"
