@@ -1,8 +1,7 @@
-using Pkg; 
-Pkg.add("GLM"); 
 using CSV
-using  DataFrames
+using DataFrames
 using GLM
+using Statistics
 
 # 1. Chargement des données
 df_reg   = CSV.read(normpath(joinpath(@__DIR__, "..", "data", "coimbra_reg.csv")), DataFrame)
@@ -16,7 +15,6 @@ folds = folds_df.fold
 
 #Liste du taux d'erreurs par pli 
 taux_erreur_pli = [] 
-
 
 
                             # DECOUPAGE EN PLI
@@ -47,18 +45,14 @@ println("Le taux d'erreur du pli $k est  : ", round(taux_erreur_pli_k, digits=4)
 
 end
 
-println("Taux d'erreur moyen :" , round(mean(taux_erreur_pli), digits=4), " (± ", round(std(taux_erreur_pli, digits=4), ")"))
+println("Taux d'erreur moyen : ", round(mean(taux_erreur_pli), digits=4), " (± ", round(std(taux_erreur_pli), digits=4), ")")
 
 
-println("Estimation sur l'ensemble du jeu de données" : )
+println("Estimation sur l'ensemble du jeu de données :")
 modele_global = lm(@formula(logLeptin ~ Age + BMI + Glucose + Insulin + Adiponectin + Resistin + MCP1), df_reg)
 println(modele_global)
 
 
 println("R² du modèle : ", round(r2(modele_global), digits=4))
-
-
-
-
 
 
